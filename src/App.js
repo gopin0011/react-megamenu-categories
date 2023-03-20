@@ -9,7 +9,7 @@ import './assets/css/style.css';
 
 import CategoriesMenu from './components/categories/';
 
-const baseURL = "http://dev-jualankita.localhost/api";
+const baseURL = "http://dev-jualankita.msi/api";
 
 function App() {
   const [categories, setCategories] = React.useState([]);

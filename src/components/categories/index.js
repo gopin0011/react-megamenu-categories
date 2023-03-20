@@ -6,7 +6,7 @@ import '../../assets/css/ionicons.min.css';
 const CategoriesMenu = (props) => {
     const { navLinksData } = props;
     const [showSubMenu, setShowSubMenu] = useState([]);
-    const baseURL = "http://dev-jualankita.localhost/";
+    const baseURL = "http://dev-jualankita.msi/";
 
     const subMenuOnMouseEnterHandler = (subMenuId) => {
         setShowSubMenu((prev) => {
@@ -40,7 +40,7 @@ const CategoriesMenu = (props) => {
                         <a className={"dropdown-item nav-link " + (el.childs.length > 0 ? 'dropdown-toggler' : 'nav_item')} href="#"><i className="flaticon-"><img src={baseURL + "storage/uploads/icons/" + el.icon_file} /></i> 
                             <span>{el.name_category}</span>
                         </a>
-                        { el.childs.length > 0 && 
+                        { showSubMenu[el.id] && el.childs.length > 0 && 
                             <div className="dropdown-menu">
                                 <ul className="mega-menu d-lg-flex">
                                     <li className="mega-menu-col col-lg-5">
@@ -50,7 +50,7 @@ const CategoriesMenu = (props) => {
                                                     <li className="dropdown-header">{el.name_category}</li>
                                                     { showSubMenu[el.id] && el.childs.map((ele) => {
                                                         return (
-                                                            <li><a className="dropdown-item nav-link nav_item" href="#"><i className="flaticon-"><img src={baseURL + "storage/uploads/icons/" + ele.icon_file} /></i>{ele.name_category}</a></li>
+                                                            <li key={ele.id} ><a className="dropdown-item nav-link nav_item" href="#"><i className="flaticon-"><img src={baseURL + "storage/uploads/icons/" + ele.icon_file} /></i>{ele.name_category}</a></li>
                                                         )
                                                     }) }
                                                 </ul>
